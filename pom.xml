@@ -6,7 +6,7 @@
 
     <groupId>org.affinitydev</groupId>
     <artifactId>Blockify</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>Blockify</name>
