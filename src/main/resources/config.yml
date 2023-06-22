@@ -4,3 +4,4 @@ blocks:
   - "GOLD_ORE"
 notification: "§c§l[!] §b%player% §7just mined §e%block%§7!"
 cooldown-in-ms: 2000
+permission: "blockify.notify"

@@ -3,6 +3,7 @@ package org.affinitydev.blockify
 import org.bukkit.Bukkit
 import org.bukkit.ChatColor
 import org.bukkit.Material
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
@@ -26,6 +27,7 @@ class Blockify : JavaPlugin(), Listener {
         val player = e.player
         if (isBlockInConfig(material) && isCooldownOver()) {
             for (p in Bukkit.getOnlinePlayers()) {
+                if (!hasPermission(p)) return
                 var message : String? = config.getString("notification", "§c§l[!] §b%player% §7just mined §e%block%§7!")
                 if (message != null) {
                     message = message.replace("%player%", player.name)
@@ -47,5 +49,13 @@ class Blockify : JavaPlugin(), Listener {
 
     private fun getCooldownFromConfig(): Long {
         return config.getLong("cooldown-in-ms", 2000)
+    }
+
+    private fun hasPermission(player: Player): Boolean {
+        var permission = config.getString("permission", "blockify.notify")
+        if (permission == null) {
+            permission = "blockify.notify"
+        }
+        return player.hasPermission(permission)
     }
 }
