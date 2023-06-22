@@ -1,0 +1,6 @@
+blocks:
+  - "DIAMOND_ORE"
+  - "EMERALD_ORE"
+  - "GOLD_ORE"
+notification: "§c§l[!] §b%player% §7just mined §e%block%§7!"
+cooldown-in-ms: 2000
